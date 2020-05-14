@@ -357,14 +357,14 @@ q        : quit
         ymin,ymax = get_flux_plotrange(self.fl[between(wa, xmin, xmax)])
         #
         art = []
-        art.append(a0.axvline(wa[i0], color='r', ls='--', lw=2, zorder=10))
-        art.append(a0.axvline(wa[i1], color='r', ls='--', lw=2, zorder=10))
+        art.append(a0.axvline(wa[i0], color='r', ls='--', lw=1, zorder=10))
+        art.append(a0.axvline(wa[i1], color='r', ls='--', lw=1, zorder=10))
         self.artists['indices'] = art
-        self.artists['initcont'], = a0.plot(wa, self.continuum, color='k', lw=2, ls='dashed', zorder=3)
-        self.artists['fl'], = a0.plot(wa, fl, lw=1, color='0.7',
-                                      linestyle='steps-mid')
+        self.artists['initcont'], = a0.plot(wa, self.continuum, color='k', ls='dashed', zorder=3, lw=1)
+        self.artists['fl'], = a0.plot(wa, fl, color='0.7',
+                                      linestyle='steps-mid', lw=1)
         a0.plot(wa, er, lw=0.5, color='orange')
-        m1, = a0.plot([0], [0], 'r', zorder=4, lw=2)
+        m1, = a0.plot([0], [0], 'r', zorder=4, lw=1)
         m2, = a0.plot([0], [0], 'o', mfc='None', mew=2, ms=12, mec='r',
                       alpha=0.7)
 

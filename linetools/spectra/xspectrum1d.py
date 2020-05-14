@@ -689,12 +689,14 @@ class XSpectrum1D(object):
         from ..analysis.interactive_plot import PlotWrapNav
         plt.rcParams['axes.formatter.useoffset'] = False  # avoid scientific notation in axes tick labels
 
+
         # Keywords
         nocolor = (False if 'color' in kwargs else True)
         xlim = kwargs.pop('xlim', None)
         inline = kwargs.pop('inline', False)
         xspec2 = kwargs.pop('plot_two', None)
         scale_two = kwargs.pop('scale_two', 1.)
+
 
         if inline:
             fig = plt.figure(figsize=(12,8))
@@ -707,9 +709,12 @@ class XSpectrum1D(object):
 
         show = kwargs.pop('show', True)
 
+        # Make line width = 1 by default; jch
+        kwargs.update(linewidth=1)
+
         if nocolor:
             kwargs.update(color='0.5')
-        artists['fl'] = ax.plot(self.wavelength, self.flux,lw=1,
+        artists['fl'] = ax.plot(self.wavelength, self.flux,
                                 drawstyle='steps-mid', label='1', **kwargs)[0]
 
         # Error
@@ -727,7 +732,7 @@ class XSpectrum1D(object):
         # Second spectrum
         if xspec2 is not None:
             ax.plot(xspec2.wavelength, xspec2.flux*scale_two, color='blue',
-                    label='2')
+                    label='2',lw=1)
             legend = ax.legend(loc='upper left', borderpad=0.3,
                             handletextpad=0.3, fontsize='large')
 

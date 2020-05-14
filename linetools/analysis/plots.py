@@ -93,10 +93,10 @@ def stack_plot(abslines, vlim=[-300,300.]*u.km/u.s, nrow=6, show=True, spec=None
         if zref is None:
             zref = iline.z
         velo = iline.analy['spec'].relative_vel((1+zref)*iline.wrest)
-        ax.plot(velo, norm_flux,  'k-', linestyle='steps-mid')
-        ax.plot(velo, norm_sig,  'r:')
+        ax.plot(velo, norm_flux,  'k-', linestyle='steps-mid',lw=1)
+        ax.plot(velo, norm_sig,  'r:',lw=1)
         # Lines
-        ax.plot([0]*2, ymnx, 'g--')
+        ax.plot([0]*2, ymnx, 'g--',lw=1)
         # Axes
         ax.set_xlim(vlim.value)
         ax.set_ylim(ymnx)
@@ -129,4 +129,3 @@ def stack_plot(abslines, vlim=[-300,300.]*u.km/u.s, nrow=6, show=True, spec=None
         return fig
     else:
         plt.close()
-

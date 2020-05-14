@@ -599,7 +599,8 @@ class ExamineSpecWidget(QWidget):
 
         if replot is True:
             self.ax.clear()
-            self.ax.plot(self.spec.wavelength.value, self.spec.flux.value, 'k-',drawstyle='steps-mid')
+            self.ax.plot(self.spec.wavelength.value, self.spec.flux.value, 'k-',
+                        drawstyle='steps-mid',linewidth=1)
             try:
                 self.ax.plot(self.spec.wavelength.value, self.spec.sig.value, 'r:')
             except (ValueError, AttributeError):
@@ -630,7 +631,7 @@ class ExamineSpecWidget(QWidget):
             # Model?
             if self.model is not None:
                 self.ax.plot(self.model.wavelength.value, self.model.flux.value,
-                    color='cyan')
+                    color='cyan',linewidth=1)
                 if self.bad_model is not None:
                     self.ax.scatter(self.model.wavelength[self.bad_model].value,
                         self.model.flux[self.bad_model].value,  marker='o',
@@ -681,7 +682,7 @@ class ExamineSpecWidget(QWidget):
                         #QtCore.pyqtRestoreInputHook()
                         if len(pix) > 0:
                             self.ax.plot(self.spec.wavelength[pix].value, self.spec.flux[pix].value,
-                                     '-',drawstyle='steps-mid', color=clrs[ii])
+                                     '-',drawstyle='steps-mid', color=clrs[ii],linewidth=1)
                         # Label
                         lbl = lines[jj].analy['name']+' z={:g}'.format(abs_sys.zabs)
                         self.ax.text(wvobs[jj].value, ylbl, lbl, color=clrs[ii], rotation=90., size='x-small')
@@ -1132,7 +1133,7 @@ U         : Indicate as a upper limit
                 velo = (self.spec.wavelength/wvobs - 1.)*const.c.to('km/s')
 
                 # Plot
-                self.ax.plot(velo.value, self.spec.flux.value, 'k-',drawstyle='steps-mid')
+                self.ax.plot(velo.value, self.spec.flux.value, 'k-',drawstyle='steps-mid',linewidth=1)
 
                 # GID for referencing
                 self.ax.set_gid(wrest)
@@ -1235,7 +1236,7 @@ U         : Indicate as a upper limit
                         clr = 'red'
 
                     pix = np.where( (velo > vlim[0]) & (velo < vlim[1]))[0]
-                    self.ax.plot(velo[pix].value, self.spec.flux[pix].value, '-', drawstyle='steps-mid', color=clr)
+                    self.ax.plot(velo[pix].value, self.spec.flux[pix].value, '-', drawstyle='steps-mid', color=clr,linewidth=1)
         # Draw
         self.canvas.draw()
 
@@ -1439,6 +1440,3 @@ class MultiSpecWidget(QWidget):
         # Extra?
         if self.extra_method is not None:
             self.extra_method.run_with_select()
-
-
-
