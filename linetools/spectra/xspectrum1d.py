@@ -709,7 +709,7 @@ class XSpectrum1D(object):
 
         if nocolor:
             kwargs.update(color='0.5')
-        artists['fl'] = ax.plot(self.wavelength, self.flux,
+        artists['fl'] = ax.plot(self.wavelength, self.flux,lw=1,
                                 drawstyle='steps-mid', label='1', **kwargs)[0]
 
         # Error
