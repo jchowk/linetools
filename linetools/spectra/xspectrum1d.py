@@ -732,7 +732,7 @@ class XSpectrum1D(object):
         # Second spectrum
         if xspec2 is not None:
             ax.plot(xspec2.wavelength, xspec2.flux*scale_two, color='blue',
-                    label='2',lw=1)
+                    label='2',lw=kwargs['linewidth'])
             legend = ax.legend(loc='upper left', borderpad=0.3,
                             handletextpad=0.3, fontsize='large')
 
