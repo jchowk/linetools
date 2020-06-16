@@ -710,7 +710,7 @@ class XSpectrum1D(object):
         show = kwargs.pop('show', True)
 
         # Make line width = 1 by default; jch
-        kwargs.update(linewidth=1)
+        kwargs.update(linewidth='1')
 
         if nocolor:
             kwargs.update(color='0.5')
